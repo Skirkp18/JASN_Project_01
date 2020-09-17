@@ -1,3 +1,24 @@
+
+
+var cocktailEl = $("#cocktail")
+var frecipeEl = $("#recipe")
+var historyEl = $("#historylist")
+var searchEl = $("#search")
+var searchinputEl = $("#searchinput")
+
+var dishhistory = []
+
+
+searchEl.on("click", function(){
+    var dishname = searchinputEl.val()
+
+    edamamRecipieAPICall(dishname)
+    getCocktail(dishname)
+})
+
+
+
+
 // DRINK API CALL
 // get drink 
 function getCocktail () {
@@ -15,8 +36,6 @@ function getCocktail () {
 
 
 
-
-
 function edamamRecipieAPICall() {
 
 var edamamID = "9d7a8164";
@@ -29,6 +48,21 @@ $.ajax({
   method: "GET"
 }).then(function(response) {
   console.log(response);
+
+  var results = response.q;
+        console.log(results)
+        
+            var p = $("<button>").text(results);
+            var list = $("<ul>")
+            list.prepend(p)
+
+            console.log(p)
+
+            dishhistory.push(list)
+            for (var i=0; i<dishhistory.length; i++){
+
+                historyEl.prepend(dishhistory[i]);
+            }
 });
 };
 
