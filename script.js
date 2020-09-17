@@ -1,7 +1,7 @@
 
 
 var cocktailEl = $("#cocktail")
-var frecipeEl = $("#recipe")
+var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
@@ -9,11 +9,13 @@ var searchinputEl = $("#searchinput")
 var dishhistory = []
 
 
-searchEl.on("click", function(){
+searchEl.on("click", function () {
     var dishname = searchinputEl.val()
 
     edamamRecipieAPICall(dishname)
-    getCocktail(dishname)
+    // getCocktail(dishname)
+
+
 })
 
 
@@ -21,13 +23,13 @@ searchEl.on("click", function(){
 
 // DRINK API CALL
 // get drink 
-function getCocktail () {
-    var alcohol = "gin"
+function getCocktail(dishname) {
+    var alcohol = dishname
     var alQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcohol;
     $.ajax({
         url: alQueryURL,
         method: "GET"
-    }).then(function(r) {
+    }).then(function (r) {
 
         var number = Math.floor((Math.random() * 50) + 1);
         var drinkID = r.drinks[number].idDrink;
@@ -35,7 +37,7 @@ function getCocktail () {
         $.ajax({
             url: inQueryURL,
             method: "GET"
-        }).then(function(re) {
+        }).then(function (re) {
             var drink = re.drinks[0];
             var drinkPicCard = $("<div>").attr("class", "col-md-3");
             var drinkPic = $("<img>").attr({
@@ -53,9 +55,9 @@ function getCocktail () {
                 console.log(drink[ingKey]);
                 if (drink[ingKey] !== null) {
                     if (drink[meaKey] !== null) {
-                    var ingredient = $("<p>").text(drink[meaKey] + " " + drink[ingKey]);
+                        var ingredient = $("<p>").text(drink[meaKey] + " " + drink[ingKey]);
                     } else {
-                    var ingredient = $("<p>").text(drink[ingKey]);
+                        var ingredient = $("<p>").text(drink[ingKey]);
                     };
                     drinkIngCard.append(ingredient);
                 }
@@ -65,45 +67,77 @@ function getCocktail () {
         //always a max of 15, make an array of all 15 ing, then loop through the array, if null, skip, else create 
         console.log(r);
 
-    });  
+    });
 
 };
 
-getCocktail();
 
 
+function edamamRecipieAPICall(dishname) {
 
-function edamamRecipieAPICall() {
+    var edamamID = "9d7a8164";
+    var key = "4ce6ec1091b11815141f2432df876863";
 
-var edamamID = "9d7a8164";
-var key = "4ce6ec1091b11815141f2432df876863";	
+    var queryURL = "https://api.edamam.com/search?q=" + dishname + "&app_id=" + edamamID + "&app_key=" + key;
 
-var queryURL = "https://api.edamam.com/search?q=burger&app_id=" + edamamID + "&app_key=" + key;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
 
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function(response) {
-  console.log(response);
-
-  var results = response.q;
+        var results = response.q;
         console.log(results)
-        
-            var p = $("<button>").text(results);
-            var list = $("<ul>")
-            list.prepend(p)
 
-            console.log(p)
+        var p = $("<button>").text(results);
+        var list = $("<ul>")
+        list.prepend(p)
 
-            dishhistory.push(list)
-            for (var i=0; i<dishhistory.length; i++){
+        console.log(p)
 
-                historyEl.prepend(dishhistory[i]);
-            }
-});
+        dishhistory.push(list)
+        for (var i = 0; i < dishhistory.length; i++) {
+
+            historyEl.prepend(dishhistory[i]);
+        }
+        generateRecipe(dishname)
+    });
 };
 
 
-getCocktail();
-edamamRecipieAPICall();
+function generateRecipe(dishname) {
+
+    var edamamID = "9d7a8164";
+    var key = "4ce6ec1091b11815141f2432df876863";
+
+    var queryURL = "https://api.edamam.com/search?q=" + dishname + "&app_id=" + edamamID + "&app_key=" + key;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        var results = response.hits[0].recipe.ingredients
+
+        recipeEl.html("")
+        var headline = $("<h1>").text("To make " + dishname + " you will need: ")
+        recipeEl.append(headline)
+
+        for (var i = 0; i < results.length; i++) {
+            var p = $("<p>").text(results[i].text)
+            recipeEl.append(p);
+
+        }
+
+
+
+
+    })
+
+
+
+
+}
+
+
 
