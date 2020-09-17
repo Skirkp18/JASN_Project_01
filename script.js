@@ -1,5 +1,20 @@
 
 
+var cocktailEl = $("#cocktail")
+var frecipeEl = $("#recipe")
+var historyEl = $("#historylist")
+var searchEl = $("#search")
+var searchinputEl = $("#searchinput")
+
+var dishhistory = []
+
+
+searchEl.on("click", function(){
+    var dishname = searchinputEl.val()
+
+    edamamRecipieAPICall(dishname)
+    getCocktail(dishname)
+})
 
 
 
@@ -13,6 +28,7 @@ function getCocktail () {
         url: alQueryURL,
         method: "GET"
     }).then(function(r) {
+
         var number = Math.floor((Math.random() * 50) + 1);
         var drinkID = r.drinks[number].idDrink;
         var inQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
@@ -47,6 +63,8 @@ function getCocktail () {
             $(".row").append(drinkPicCard, drinkIngCard);
         });
         //always a max of 15, make an array of all 15 ing, then loop through the array, if null, skip, else create 
+        console.log(r);
+
     });  
 
 };
@@ -54,17 +72,38 @@ function getCocktail () {
 getCocktail();
 
 
+
 function edamamRecipieAPICall() {
 
 var edamamID = "9d7a8164";
 var key = "4ce6ec1091b11815141f2432df876863";	
 
-var queryURL = "https://api.edamam.com/search?q=spaghetti&app_id=9320ecc7&app_key=68c58b49df411be74f1ba681a92f0501";
+var queryURL = "https://api.edamam.com/search?q=burger&app_id=" + edamamID + "&app_key=" + key;
 
 $.ajax({
   url: queryURL,
   method: "GET"
 }).then(function(response) {
   console.log(response);
+
+  var results = response.q;
+        console.log(results)
+        
+            var p = $("<button>").text(results);
+            var list = $("<ul>")
+            list.prepend(p)
+
+            console.log(p)
+
+            dishhistory.push(list)
+            for (var i=0; i<dishhistory.length; i++){
+
+                historyEl.prepend(dishhistory[i]);
+            }
 });
 };
+
+
+getCocktail();
+edamamRecipieAPICall();
+
