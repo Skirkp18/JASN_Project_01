@@ -18,7 +18,8 @@ function getCocktail () {
 };
 
 
-
+// RECIPE API CALL
+// get recipes
 function edamamRecipieAPICall() {
 
 var edamamID = "9d7a8164";
@@ -36,3 +37,4 @@ $.ajax({
 
 getCocktail();
 edamamRecipieAPICall();
+
