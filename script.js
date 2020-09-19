@@ -89,13 +89,13 @@ function edamamRecipieAPICall(dishname) {
         var results = response.q;
         console.log(results)
 
-        var p = $("<button>").text(results);
-        var list = $("<ul>")
+        var p = $("<button>").text(results).attr("class", "btn btn-outline-secondary").attr("id", "history");
+        var list = $("#historylist")
         list.prepend(p)
 
         console.log(p)
 
-        dishhistory.push(list)
+        dishhistory.push(p)
         for (var i = 0; i < dishhistory.length; i++) {
 
             historyEl.prepend(dishhistory[i]);

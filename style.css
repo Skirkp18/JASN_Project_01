@@ -1,3 +1,84 @@
 img {
     width: 200px;
 }
+
+
+/* header stylings */
+
+#mainheader {
+
+    text-align: center;
+    height: 175px;
+    margin-top: 10px;
+    background-color:lightgray;
+
+}
+
+#namebox {
+
+    text-align: center;
+}
+
+
+/* searchbox col */
+
+#searchbox {
+    border: 2px solid black;
+    height: 575px;
+}
+
+#search {
+    width: 350px;
+    margin-top: 5px;
+}
+
+#checkbox {
+    border-top: 2px solid black;
+    margin-top: 200px;
+    margin-bottom: 5px;
+}
+
+.form-check {
+    margin: 22px;
+}
+
+
+/* main page */
+
+#pagecontents {
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#mainbody {
+
+    border: 2px solid black;
+    height: 620px;
+    margin-right: ;
+}
+
+#recipedisplay {
+
+    border: 2px solid black;
+    height: 200px;
+    margin-top: 15px;
+}
+
+
+
+/* footer */
+
+#footer {
+    background-color: lightgrey;
+    height: 75px;
+    text-align: center;
+}
+
+#footertxt {
+    margin-top: 15px;
+}
+
+#history {
+    width: 345px;
+}
