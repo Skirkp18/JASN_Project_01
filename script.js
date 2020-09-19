@@ -14,7 +14,7 @@ searchEl.on("click", function () {
 
     console.log(dishname)
 
-    alcohol = $(this).checkbox.val()
+    alcohol = checkbox.val()
 
     console.log(alcohol);
   
