@@ -66,6 +66,7 @@ img {
     border: 2px solid black;
     height: 200px;
     margin-top: 15px;
+    overflow: scroll;
 }
 
 
@@ -81,5 +82,11 @@ img {
 #footertxt {
     margin-top: 15px;
 }
+
+
+.history {
+    width: 345px;
+}
+
 
 

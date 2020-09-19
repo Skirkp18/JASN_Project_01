@@ -8,11 +8,14 @@ var searchinputEl = $("#searchinput")
 var checkbox = $("#defaultCheck1")
 var dishhistory = []
 
-
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
+
+    console.log(dishname)
+
     var alcohol = checkbox.val()
-    console.log(alcohol);
+  
+
 
     edamamRecipieAPICall(dishname)
     // getCocktail(dishname)
@@ -90,7 +93,7 @@ function edamamRecipieAPICall(dishname) {
         var results = response.q;
         console.log(results)
 
-        var p = $("<button>").text(results).attr("class", "btn btn-outline-secondary").attr("id", "history");
+        var p = $("<button>").text(results).attr("class", "btn btn-outline-secondary history");
         var list = $("#historylist")
         list.prepend(p)
 
@@ -101,6 +104,11 @@ function edamamRecipieAPICall(dishname) {
 
             historyEl.prepend(dishhistory[i]);
         }
+        $(".history").on("click", function (){
+            var text = $(this).text();
+            generateRecipe(text);
+        })
+
         generateRecipe(dishname)
     });
 };
