@@ -123,13 +123,20 @@ function generateRecipe(dishname) {
     var key = "4ce6ec1091b11815141f2432df876863";
 
     var queryURL = "https://api.edamam.com/search?q=" + dishname + "&app_id=" + edamamID + "&app_key=" + key;
-
+    
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response)
 
         var results = response.hits[0].recipe.ingredients
+
+        var dishimg = $("<img>").attr({
+            src: response.hits[0].recipe.image,
+            width: "200px"
+        });
+        
 
         recipeEl.html("")
         var headline = $("<h1>").text("To make " + dishname + " you will need: ")
@@ -137,7 +144,9 @@ function generateRecipe(dishname) {
 
         for (var i = 0; i < results.length; i++) {
             var p = $("<p>").text(results[i].text)
+            var img = dishimg[i]
             recipeEl.append(p);
+            recipeEl.prepend(img);
 
         }
 
