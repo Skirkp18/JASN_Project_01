@@ -1,3 +1,15 @@
+/* colors */
+/* dark gray = #042a2b
+deep blue = #5eb1bf
+light blue = #cdedf6
+light orange = #ef7b45
+deep orange = #d84727 */
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
 img {
     width: 200px;
 }
