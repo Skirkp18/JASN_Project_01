@@ -25,7 +25,7 @@ searchEl.on("click", function () {
 // DRINK API CALL
 // get drink 
 function getCocktail() {
-    
+    cocktailEl.empty();
     var alQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcohol;
     $.ajax({
         url: alQueryURL,
