@@ -5,16 +5,17 @@ var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
-
+var checkbox = $("#defaultCheck1")
 var dishhistory = []
 
 
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
+    var alcohol = checkbox.val()
+    console.log(alcohol);
 
     edamamRecipieAPICall(dishname)
     // getCocktail(dishname)
-
 
 })
 
