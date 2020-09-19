@@ -5,8 +5,9 @@ var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
+var list = $("#historylist")
 var alcohol = '';
-var dishhistory = []
+var dishhistory = ["", "", "", ""]
 
 console.log(checkbox);
 
@@ -85,26 +86,14 @@ function edamamRecipieAPICall(dishname) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-
         var results = response.q;
         console.log(results)
+        dishhistory.unshift(dishname)
 
-        var p = $("<button>").text(results).attr("class", "btn btn-outline-secondary history");
-        var list = $("#historylist")
-        list.prepend(p)
 
-        console.log(p)
-
-        dishhistory.push(p)
-        for (var i = 0; i < dishhistory.length; i++) {
-
-            historyEl.prepend(dishhistory[i]);
-        }
-        $(".history").on("click", function (){
-            var text = $(this).text();
-            generateRecipe(text);
-        })
-
+       
+        savetoLocalStorage();
+        loadSearchHistory()
         generateRecipe(dishname)
     });
 };
@@ -153,6 +142,33 @@ function generateRecipe(dishname) {
 
 }
 
+function loadSearchHistory() {
+    list.empty()
+    var parsedHistory = JSON.parse(localStorage.getItem("history"));
+    console.log(parsedHistory)
+    if (parsedHistory !== null){
+    dishhistory = parsedHistory;
+    }
+    for (var i = 0; i < 4; i++) {
+        var p = $("<button>").text(dishhistory[i]).attr("class", "btn btn-outline-secondary history");
+        list.append(p)
+      }
+      $(".history").on("click", function (){
+        var text = $(this).text();
+        generateRecipe(text);
+    })
+
+    console.log(dishhistory);
+
+}
+
+function savetoLocalStorage() {
+
+console.log(dishhistory);
+var stringifieddishhistory = JSON.stringify(dishhistory);
+localStorage.setItem("history", stringifieddishhistory)
+
+}
 
 // click event for check boxes
 
@@ -162,4 +178,6 @@ $(document).ready(function(){
     });
 });
 
+
+loadSearchHistory()
 
