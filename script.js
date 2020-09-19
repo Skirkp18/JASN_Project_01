@@ -1,11 +1,12 @@
 
 
-var cocktailEl = $("#cocktail")
+var cocktailEl = $(".drink")
 var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
 var checkbox = $("#defaultCheck1")
+var alcohol = '';
 var dishhistory = []
 
 searchEl.on("click", function () {
@@ -13,12 +14,14 @@ searchEl.on("click", function () {
 
     console.log(dishname)
 
-    var alcohol = checkbox.val()
+    alcohol = $(this).checkbox.val()
+
+    console.log(alcohol);
   
 
 
     edamamRecipieAPICall(dishname)
-    // getCocktail(dishname)
+    getCocktail();
 
 })
 
@@ -27,15 +30,15 @@ searchEl.on("click", function () {
 
 // DRINK API CALL
 // get drink 
-function getCocktail(dishname) {
-    var alcohol = dishname
+function getCocktail() {
+    
     var alQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcohol;
     $.ajax({
         url: alQueryURL,
         method: "GET"
     }).then(function (r) {
-
-        var number = Math.floor((Math.random() * 50) + 1);
+        console.log(r);
+        var number = Math.floor((Math.random() * r.drinks.length) + 1);
         var drinkID = r.drinks[number].idDrink;
         var inQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
         $.ajax({
@@ -52,7 +55,8 @@ function getCocktail(dishname) {
             // append to page
             var drinkIngCard = $("<div>").attr("class", "col-md-4");
             var drinkName = $("<h3>").text(drink.strDrink);
-            drinkIngCard.append(drinkName);
+            var drinkIns = $("<h6>").text(drink.strInstructions);
+            drinkIngCard.append(drinkName, drinkIns);
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
                 var meaKey = "strMeasure" + i;
@@ -66,10 +70,9 @@ function getCocktail(dishname) {
                     drinkIngCard.append(ingredient);
                 }
             };
-            $(".row").append(drinkPicCard, drinkIngCard);
+            cocktailEl.append(drinkPicCard, drinkIngCard);
         });
         //always a max of 15, make an array of all 15 ing, then loop through the array, if null, skip, else create 
-        console.log(r);
 
     });
 
