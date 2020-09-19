@@ -7,7 +7,7 @@ var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
 var list = $("#historylist")
 var alcohol = '';
-var dishhistory = ["", "", "", ""]
+var dishhistory = ["", "", "", "", ""]
 
 console.log(checkbox);
 
@@ -88,10 +88,10 @@ function edamamRecipieAPICall(dishname) {
         console.log(response);
         var results = response.q;
         console.log(results)
+        if (dishname !== ""){
         dishhistory.unshift(dishname)
+        }
 
-
-       
         savetoLocalStorage();
         loadSearchHistory()
         generateRecipe(dishname)
@@ -149,7 +149,7 @@ function loadSearchHistory() {
     if (parsedHistory !== null){
     dishhistory = parsedHistory;
     }
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         var p = $("<button>").text(dishhistory[i]).attr("class", "btn btn-outline-secondary history");
         list.append(p)
       }
