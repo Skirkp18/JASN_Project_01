@@ -5,16 +5,20 @@ var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
-
+var checkbox = $("#defaultCheck1")
 var dishhistory = []
 
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
+
     console.log(dishname)
+
+    var alcohol = checkbox.val()
+  
+
 
     edamamRecipieAPICall(dishname)
     // getCocktail(dishname)
-
 
 })
 
@@ -144,5 +148,13 @@ function generateRecipe(dishname) {
 
 }
 
+
+// click event for check boxes
+
+$(document).ready(function(){
+    $('input:checkbox').click(function() {
+        $('input:checkbox').not(this).prop('checked', false);
+    });
+});
 
 
