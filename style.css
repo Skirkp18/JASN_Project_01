@@ -28,8 +28,12 @@ img {
 }
 
 #search {
-    width: 350px;
+    width: 100%;
     margin-top: 5px;
+}
+
+#history {
+    width: 100%;
 }
 
 #checkbox {
@@ -78,6 +82,4 @@ img {
     margin-top: 15px;
 }
 
-#history {
-    width: 345px;
-}
+
