@@ -5,21 +5,15 @@ var recipeEl = $("#recipes")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
-var checkbox = $("#defaultCheck1")
 var alcohol = '';
 var dishhistory = []
 
+console.log(checkbox);
+
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
-
-    console.log(dishname)
-
-    alcohol = checkbox.val()
-
-    console.log(alcohol);
+    alcohol = $("input[class ='form-check-input']:checked").val();
   
-
-
     edamamRecipieAPICall(dishname)
     getCocktail();
 
@@ -37,7 +31,6 @@ function getCocktail() {
         url: alQueryURL,
         method: "GET"
     }).then(function (r) {
-        console.log(r);
         var number = Math.floor((Math.random() * r.drinks.length) + 1);
         var drinkID = r.drinks[number].idDrink;
         var inQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkID;
@@ -55,7 +48,7 @@ function getCocktail() {
             // append to page
             var drinkIngCard = $("<div>").attr("class", "col-md-4");
             var drinkName = $("<h3>").text(drink.strDrink);
-            var drinkIns = $("<h6>").text(drink.strInstructions);
+            var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions);
             drinkIngCard.append(drinkName, drinkIns);
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
