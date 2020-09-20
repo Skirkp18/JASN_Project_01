@@ -7,7 +7,7 @@ var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
 var list = $("#historylist")
 var alcohol = '';
-var dishhistory = ["", "", "", ""]
+var dishhistory = []
 
 console.log(checkbox);
 
@@ -149,9 +149,11 @@ function loadSearchHistory() {
     if (parsedHistory !== null){
     dishhistory = parsedHistory;
     }
-    for (var i = 0; i < 4; i++) {
-        var p = $("<button>").text(dishhistory[i]).attr("class", "btn btn-outline-secondary history");
+    for (var i = 0; i < dishhistory.length; i++) {
+        if (i < 4) {
+        var p = $("<button>").text(dishhistory[i]).attr("class", "btn btn-outline-secondary");
         list.append(p)
+        }
       }
       $(".history").on("click", function (){
         var text = $(this).text();

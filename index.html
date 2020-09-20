@@ -31,42 +31,40 @@
 </head>
 
 <body style="background-color: #5eb1bf">
-
-  <!-- gird container -->
-  <div class="container-fluid card" style="background-color: #cdedf6; font-family: 'Raleway', sans-serif;">
-
-    <!-- row 1 -->
-    <div class="row">
-      <!-- jumbotron header -->
-      <div class="col">
-        <header class="card" id="mainheader">
-          <div id="namebox">
-            <h1 id="name">QChef</h1>
-          </div>
-          <p>As a dedicated food connoisseur, don't you just miss the dining at your
-            favourite restaurant and savouring your favourite food?</p>
-          <hr class="my-4">
-          <p>With Qchef, you are able to search the receipes of your favourite foods from your
-            favourite
-            restaurants and make the food at home!</p>
-        </header>
-      </div>
-    </div>
+    
+<header class="card" id="mainheader">
+  <div id="namebox">
+    <h1 id="name">QChef</h1>
+  </div>
+  <p>As a dedicated food connoisseur, don't you just miss the dining at your
+    favourite restaurant and savouring your favourite food?</p>
+  <hr class="my-4">
+  <p>With Qchef, you are able to search the receipes of your favourite foods from your
+    favourite
+    restaurants and make the food at home!</p>
+</header>
+   
 
     <!-- Page Content -->
+<!-- gird container -->
+  <div class="container-fluid card" style="background-color: #cdedf6; font-family: 'Raleway', sans-serif;">
 
     <!-- row 2 -->
     <div class="row" id="pagecontents">
 
-      <!-- search&history -->
-      <div class="col-4">
-      <div class="card" id="searchbox">
-        <!-- search -->
-        <h2 style="text-align: center;">Search For A Recipe:</h2>
-        <input id="searchinput" placeholder="Type What You Want To Eat">
+        <!-- search&history -->
+        <div class="col-md-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 card" id="searchbox">
+                        <!-- search -->
+                        <h2 style="text-align: center;">Search For A Recipe:</h2>
+                        <input id="searchinput" placeholder="Type What You Want To Eat">
+                        <div id="historylist"></div>
+                      </div>
         <!-- dynamic storage of searches -->
-        <div id="historylist">
-        </div>
+            
+
         <div id="checkbox">
 
           <!-- alcohol 1 -->
