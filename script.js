@@ -1,7 +1,7 @@
 
 
 var cocktailEl = $(".drink")
-var recipeEl = $("#recipes")
+var recipeEl = $(".recipe")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
@@ -40,16 +40,15 @@ function getCocktail() {
             method: "GET"
         }).then(function (re) {
             var drink = re.drinks[0];
-            var drinkPicCard = $("<div>").attr("class", "col-md-3");
+            var drinkPicCard = $("<div>").attr("class", "col-sm-2");
             var drinkPic = $("<img>").attr({
                 src: drink.strDrinkThumb,
-                width: "200px"
             });
             drinkPicCard.append(drinkPic);
             // append to page
-            var drinkIngCard = $("<div>").attr("class", "col-md-4");
-            var drinkName = $("<h3>").text(drink.strDrink);
-            var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions);
+            var drinkIngCard = $("<div>").attr("class", "col-sm-9 ins");
+            var drinkName = $("<h4>").text(drink.strDrink);
+            var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions)
             drinkIngCard.append(drinkName, drinkIns);
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
@@ -111,26 +110,22 @@ function generateRecipe(dishname) {
         method: "GET"
     }).then(function (response) {
         console.log(response)
-
+        recipeEl.empty();
         var results = response.hits[0].recipe.ingredients
-
-        var dishimg = $("<img>").attr({
-            src: response.hits[0].recipe.image,
-            width: "200px"
-        });
-        
-
-        recipeEl.html("")
-        var headline = $("<h1>").text("To make " + dishname + " you will need: ")
-        recipeEl.append(headline)
+        var dishIngCard = $("<div>").attr("class", "col-sm-9 ins");
+        var dishPicCard = $("<div>").attr("class", "col-sm-2");
+        var dishimg = $("<img>").attr("src", response.hits[0].recipe.image);
+        var headline = $("<h4>").text(response.hits[0].recipe.label);
+        dishPicCard.append(dishimg);
+        dishIngCard.append(headline);
 
         for (var i = 0; i < results.length; i++) {
             var p = $("<p>").text(results[i].text)
             var img = dishimg[i]
-            recipeEl.append(p);
-            recipeEl.prepend(img);
-
+            dishIngCard.append(p);
         }
+
+        recipeEl.append(dishPicCard, dishIngCard);
 
 
 
@@ -151,7 +146,7 @@ function loadSearchHistory() {
     }
     for (var i = 0; i < dishhistory.length; i++) {
         if (i < 4) {
-        var p = $("<button>").text(dishhistory[i]).attr("class", "btn btn-outline-secondary");
+        var p = $("<button>").text(dishhistory[i])
         list.append(p)
         }
       }
