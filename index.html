@@ -30,151 +30,106 @@
 
 </head>
 
-<body style="background-color: #5eb1bf">
-
-  <!-- gird container -->
-  <div class="container-fluid card" style="background-color: #cdedf6; font-family: 'Raleway', sans-serif;">
-
-    <!-- row 1 -->
-    <div class="row">
-      <!-- jumbotron header -->
-      <div class="col">
-        <header class="card" id="mainheader">
-          <div id="namebox">
-            <h1 id="name">QChef</h1>
-          </div>
-          <p>As a dedicated food connoisseur, don't you just miss the dining at your
-            favourite restaurant and savouring your favourite food?</p>
-          <hr class="my-4">
-          <p>With Qchef, you are able to search the receipes of your favourite foods from your
-            favourite
-            restaurants and make the food at home!</p>
-        </header>
-      </div>
-    </div>
+<body style="background-color: #042a2b">
+    
+<header>
+  <div class="mainheader">
+    <h1>QChef</h1>
+    <p>Dine & Drink @ Home</p>
+  </div>
+</header>
+   
 
     <!-- Page Content -->
+<!-- gird container -->
+  <div class="container-fluid">
 
     <!-- row 2 -->
     <div class="row" id="pagecontents">
-
-      <!-- search&history -->
-      <div class="col-4">
-      <div class="card" id="searchbox">
-        <!-- search -->
-        <h2 style="text-align: center;">Search For A Recipe:</h2>
-        <input id="searchinput" placeholder="Type What You Want To Eat" style="margin-bottom: 5px;">
-        <!-- dynamic storage of searches -->
-        <div id="historylist">
-        </div>
-        <div id="checkbox">
-
-          <!-- alcohol 1 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Bourbon" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Bourbon
-            </label>
-          </div>
-
-          <!-- alcohol 2 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Vodka" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Vodka
-            </label>
-          </div>
-
-          <!-- alcohol 3 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Gin" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Gin
-            </label>
-          </div>
-
-          <!-- alcohol 4 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Tequila" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Tequila 
-            </label>
-          </div>
-
-          <!-- alcohol 5 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Rum" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Rum
-            </label>
-          </div>
-
-          <!-- alcohol 5 -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="Scotch" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Scotch
-            </label>
-          </div>
-
-
-        </div>
-        
-      </div>
-      <button id="search" class="btn btn-primary">Search</button>
-
-      </div>
-
-      <!-- alcohol check -->
-
-
-
-
-
-
-
-      <!-- main body/results -->
-      <div class="col-8">
-
-        <!-- subgrid -->
-        <div class="container card" id="mainbody">
-          <!-- sub row 1 -->
-          <div class="row">
-            <!-- col 1 -->
-            <div class="col" id="recipedisplay">
-              <!-- dynamic showing of recipes of the dish searched -->
-              <div id="recipes">
-              </div>
+        <!-- search&history -->
+        <div class="col-md-3 search">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12" id="searchbox">
+                        <!-- search -->
+                        <h2 style="text-align: center;">Search For A Recipe:</h2>
+                        <input id="searchinput" placeholder="Type What You Want To Eat">
+                        <div id="historylist"></div>
+                        <div id="checkbox">
+                          <h4>Now, select a liquor!</h4>
+                          <!-- alcohol 1 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Bourbon" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Bourbon
+                            </label>
+                          </div>
+                
+                          <!-- alcohol 2 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Vodka" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Vodka
+                            </label>
+                          </div>
+                
+                          <!-- alcohol 3 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Gin" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Gin
+                            </label>
+                          </div>
+                
+                          <!-- alcohol 4 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Tequila" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Tequila 
+                            </label>
+                          </div>
+                
+                          <!-- alcohol 5 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Rum" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Rum
+                            </label>
+                          </div>
+                
+                          <!-- alcohol 5 -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Scotch" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Scotch
+                            </label>
+                          </div>
+                        </div>
+                    </div>
+                    <button id="search" class="btn btn-primary">Search</button>
+                </div>
             </div>
-          </div>
+        </div>
 
-          <div class="row drink"></div>
+        <!-- main body/results -->
+        <div class="col-md-8 results">
 
-
-
-
-
-
-
-
+          <!-- subgrid -->
+          <div class="container-fluid" id="mainbody">
+            <!-- sub row 1 -->
+            <div class="row drink"></div>
+            <div class="row recipe"></div>
           </div>
         </div>
-      </div>
     </div>
+  </div>
 
 
     <!-- row 3 (footer) -->
-    <div class="row">
-      <!-- col -->
-      <div class="col">
-        <div class="card" id="footer">
-          <h1 id="footertxt">JASN_Project_01©</h1>
-        </div>
-      </div>
-    </div>
+  <footer> 
+      <p id="copyright"> &copy; Copyright</p>
 
-
-  </div>
+  </footer>
 
 
 
