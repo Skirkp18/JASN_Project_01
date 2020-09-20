@@ -1,5 +1,4 @@
-
-
+// VARIABLES
 var cocktailEl = $(".drink")
 var recipeEl = $(".recipe")
 var historyEl = $("#historylist")
@@ -87,10 +86,10 @@ function edamamRecipieAPICall(dishname) {
         console.log(response);
         var results = response.q;
         console.log(results)
+        if (dishname !== ""){
         dishhistory.unshift(dishname)
+        }
 
-
-       
         savetoLocalStorage();
         loadSearchHistory()
         generateRecipe(dishname)
