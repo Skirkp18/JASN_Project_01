@@ -45,7 +45,7 @@
   <div class="container-fluid">
 
     <!-- row 2 -->
-    <div class="row" id="pagecontents">
+    <div class="row is-flex" id="pagecontents">
         <!-- search&history -->
         <div class="col-md-3 search">
             <div class="container-fluid">
@@ -112,23 +112,30 @@
         </div>
 
         <!-- main body/results -->
-        <div class="col-md-8 results">
+        <div class="col-md-8 results" style="height: 100%;">
 
           <!-- subgrid -->
           <div class="container-fluid" id="mainbody">
             <!-- sub row 1 -->
-            <div class="row drink"></div>
-            <div class="row recipe"></div>
+            <div class="row is-flex">
+            <div class="col-6 drink"></div>
+            <div class="col-6 recipe"></div>
+            </div>
           </div>
         </div>
     </div>
-  </div>
 
     <!-- row 3 (footer) -->
+    <div class="row">
+      <div class="col">
     <footer> 
       <p id="copyright"> &copy; Copyright</p>
   
   </footer>
+      </div>
+    </div>
+  </div>
+
     
 
 

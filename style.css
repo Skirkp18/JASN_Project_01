@@ -54,7 +54,9 @@ header {
 
 #searchbox {
     background-color: white;
+    margin-top: 2px;
     padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 15px;
 }
 
@@ -96,11 +98,14 @@ header {
 
 /* main page */
 
+
 .results {
     background-color: white;
-    min-height: 570px;
+    min-height: 585px;
     border-radius: 15px;
     margin: auto;
+    margin-right: 50px;
+    margin-top: 2px;
 }
 
 .recipe {
@@ -164,6 +169,7 @@ button {
 footer {
     display: block;
     width: 100%;
+    margin-top: 20px;
     padding: 20px;
     border-top: 5px solid #ef7b45;
     background-color:#5eb1bf;

@@ -110,6 +110,7 @@ function edamamRecipieAPICall(dishname) {
         dishhistory.unshift(dishname)
         }
 
+
         savetoLocalStorage();
         loadSearchHistory()
         generateRecipe(dishname)
@@ -129,6 +130,8 @@ function generateRecipe(dishname) {
         method: "GET"
     }).then(function (response) {
         recipeEl.empty();
+        console.log(response);
+
         var results = response.hits[0].recipe.ingredients
         var dishIngCard = $("<div>").attr("class", "col-sm-9 ins");
         var dishPicCard = $("<div>").attr("class", "col-sm-2");
