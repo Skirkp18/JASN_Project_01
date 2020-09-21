@@ -63,6 +63,8 @@ header {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 5px;
+    border-radius: 5px !important;
+    padding: 3px;
 }
 
 #checkbox {
@@ -79,6 +81,7 @@ header {
 
 #historylist {
     min-height: 150px;
+    margin-bottom: 10px;
 }
 
 #search {
@@ -137,9 +140,7 @@ h3, h6 {
 button {
     display: block;
     background-color: #5eb1bf;
-    border-radius: 5px !important;
-    padding: 3px;
-    margin: 10px !important;
+    /* margin: 10px !important; */
 }
 
 /* footer */

@@ -8,7 +8,6 @@ var list = $("#historylist")
 var alcohol = '';
 var dishhistory = []
 
-console.log(checkbox);
 
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
@@ -52,7 +51,6 @@ function getCocktail() {
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
                 var meaKey = "strMeasure" + i;
-                console.log(drink[ingKey]);
                 if (drink[ingKey] !== null) {
                     if (drink[meaKey] !== null) {
                         var ingredient = $("<p>").text(drink[meaKey] + " " + drink[ingKey]);
@@ -83,9 +81,7 @@ function edamamRecipieAPICall(dishname) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         var results = response.q;
-        console.log(results)
         if (dishname !== ""){
         dishhistory.unshift(dishname)
         }
@@ -108,7 +104,6 @@ function generateRecipe(dishname) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response)
         recipeEl.empty();
         var results = response.hits[0].recipe.ingredients
         var dishIngCard = $("<div>").attr("class", "col-sm-9 ins");
@@ -145,22 +140,21 @@ function loadSearchHistory() {
     }
     for (var i = 0; i < dishhistory.length; i++) {
         if (i < 4) {
-        var p = $("<button>").text(dishhistory[i])
+        var p = $("<button>").text(dishhistory[i]).attr("class", "history");
         list.append(p)
         }
       }
       $(".history").on("click", function (){
         var text = $(this).text();
+        console.log("click");
         generateRecipe(text);
     })
 
-    console.log(dishhistory);
 
 }
 
 function savetoLocalStorage() {
 
-console.log(dishhistory);
 var stringifieddishhistory = JSON.stringify(dishhistory);
 localStorage.setItem("history", stringifieddishhistory)
 
