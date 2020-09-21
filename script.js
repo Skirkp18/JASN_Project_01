@@ -5,10 +5,11 @@ var historyEl = $("#historylist")
 var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
 var list = $("#historylist")
+var checkboxs = $(".form-check-input")
 var alcohol = '';
 var dishhistory = []
 
-
+// event listners
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
     alcohol = $("input[class ='form-check-input']:checked").val();
@@ -16,8 +17,31 @@ searchEl.on("click", function () {
     edamamRecipieAPICall(dishname)
     getCocktail();
 
-})
+});
 
+// if enter is pressed when typing in dish
+$(searchinputEl).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        var dishname = searchinputEl.val()
+        alcohol = $("input[class ='form-check-input']:checked").val();
+      
+        edamamRecipieAPICall(dishname)
+        getCocktail();
+    }
+});
+
+// if enter is pressed when choosing drink
+$(checkboxs).keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        var dishname = searchinputEl.val()
+        alcohol = $("input[class ='form-check-input']:checked").val();
+      
+        edamamRecipieAPICall(dishname)
+        getCocktail();
+    }
+});
 
 
 
