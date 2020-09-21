@@ -143,6 +143,9 @@ function generateRecipe(dishname) {
             dishIngCard.append(p);
         }
 
+        var dishFullRecipe = $("<a>").text("Click to see full recipe!").attr("href", response.hits[0].recipe.url);
+        dishIngCard.append(dishFullRecipe);
+
         recipeEl.append(dishPicCard, dishIngCard);
 
 
