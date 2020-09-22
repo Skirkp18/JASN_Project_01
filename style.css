@@ -114,10 +114,7 @@ header {
     min-height: 585px;
     max-height: fit-content;
     border-radius: 15px;
-    /* margin: auto;
-    margin-right: 50px;
-    margin-top: 2px;
-    margin-bottom: 200px; */
+    margin-bottom: 10px;
 }
 
 .recipe {
