@@ -1,5 +1,5 @@
 // VARIABLES
-var cocktailEl = $(".drink")
+var cocktailEl = $(".drinkdish")
 var recipeEl = $(".recipe")
 var historyEl = $("#historylist")
 var searchEl = $("#search")
@@ -62,16 +62,15 @@ function getCocktail() {
             method: "GET"
         }).then(function (re) {
             var drink = re.drinks[0];
-            var drinkPicCard = $("<div>").attr("class", "col-sm-2");
+            var drinkCard = $("<div>").attr("class", "col-lg-6 drink");
             var drinkPic = $("<img>").attr({
                 src: drink.strDrinkThumb,
             });
-            drinkPicCard.append(drinkPic);
+            drinkCard.append(drinkPic);
             // append to page
-            var drinkIngCard = $("<div>").attr("class", "col-sm-9 ins");
             var drinkName = $("<h4>").text(drink.strDrink);
             var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions)
-            drinkIngCard.append(drinkName, drinkIns);
+            drinkCard.append(drinkName, drinkIns);
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
                 var meaKey = "strMeasure" + i;
@@ -81,10 +80,10 @@ function getCocktail() {
                     } else {
                         var ingredient = $("<p>").text(drink[ingKey]);
                     };
-                    drinkIngCard.append(ingredient);
+                    drinkCard.append(ingredient);
                 }
             };
-            cocktailEl.append(drinkPicCard, drinkIngCard);
+            cocktailEl.append(drinkCard);
         });
         //always a max of 15, make an array of all 15 ing, then loop through the array, if null, skip, else create 
 
@@ -130,26 +129,22 @@ function generateRecipe(dishname) {
         method: "GET"
     }).then(function (response) {
         recipeEl.empty();
-        console.log(response);
-
         var results = response.hits[0].recipe.ingredients
-        var dishIngCard = $("<div>").attr("class", "col-sm-9 ins");
-        var dishPicCard = $("<div>").attr("class", "col-sm-2");
+        var dishCard = $("<div>").attr("class", "col-lg-6 recipe");
         var dishimg = $("<img>").attr("src", response.hits[0].recipe.image);
         var headline = $("<h4>").text(response.hits[0].recipe.label);
-        dishPicCard.append(dishimg);
-        dishIngCard.append(headline);
+        dishCard.append(dishimg, headline);
 
         for (var i = 0; i < results.length; i++) {
             var p = $("<p>").text(results[i].text)
             var img = dishimg[i]
-            dishIngCard.append(p);
+            dishCard.append(p);
         }
 
         var dishFullRecipe = $("<a>").text("Click to see full recipe!").attr("href", response.hits[0].recipe.url);
-        dishIngCard.append(dishFullRecipe);
+        dishCard.append(dishFullRecipe);
 
-        recipeEl.append(dishPicCard, dishIngCard);
+        cocktailEl.prepend(dishCard);
 
 
 
