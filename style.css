@@ -47,14 +47,15 @@ header {
 
 #searchinput {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 5px !important;
     border:2px solid #ef7b45;
     border-radius: 5px;
 }
 
 #searchbox {
     background-color: white;
-    margin-top: 2px;
+    /* margin: auto;
+    margin-top: 2px; */
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 15px;
@@ -94,44 +95,50 @@ header {
     border: 2px solid #5eb1bf;
     color: #042a2b;
     height: 40px;
+    margin-bottom: 10px !important;
 }
 
 /* main page */
-
+#pagecontents {
+    margin: auto;
+    margin-bottom: 100px;
+}
 
 .results {
     background-color: white;
     min-height: 585px;
     border-radius: 15px;
-    margin: auto;
+    /* margin: auto;
     margin-right: 50px;
     margin-top: 2px;
+    margin-bottom: 200px; */
 }
 
 .recipe {
-    max-height: 250px;
-    margin: 15px;
+    height: 580px;
     overflow: scroll;
     color: #042a2b;
-    border-radius: 15px;
-    padding: 15px;
+    border-radius: 25px;
+    border: 10px solid white;
+    padding: 25px !important;
     background-color: #cdedf6;
 }
 
 .drink {
     background-color: #ef7b45;
-    max-height: 250px;
+    height: 580px;
     overflow: scroll;
     color: white;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 15px;
+    border-radius: 25px;
+    padding: 25px !important;
+    border: 10px solid white;
 }
 
 img {
+    align-self: center;
     margin: 10px;
     display: block;
-    width: 200px;
+    width: 400px;
 }
 
 h3, h6 {
