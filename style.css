@@ -40,6 +40,9 @@ header {
     text-align: center;
 }
 
+.floatleft {
+    float: left;
+}
 
 /* searchbox col */
 
@@ -107,6 +110,7 @@ header {
 .results {
     background-color: white;
     min-height: 585px;
+    max-height: fit-content;
     border-radius: 15px;
     /* margin: auto;
     margin-right: 50px;
@@ -116,7 +120,7 @@ header {
 
 .recipe {
     height: 580px;
-    overflow: scroll;
+    overflow: auto;
     color: #042a2b;
     border-radius: 25px;
     border: 10px solid white;
@@ -127,7 +131,7 @@ header {
 .drink {
     background-color: #ef7b45;
     height: 580px;
-    overflow: scroll;
+    overflow: aut;
     color: white;
     border-radius: 25px;
     padding: 25px !important;
