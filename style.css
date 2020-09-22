@@ -15,8 +15,10 @@ img {
 
 h1 {
     margin: 20px;
+    margin-left: 30%;
+    margin-right: 30%;
     padding: 10px;
-    font-size: xx-large;
+    font-size: 100px !important;
 }
 
 .mainheader {
@@ -139,7 +141,6 @@ header {
 }
 
 img {
-    align-self: center;
     margin: 10px;
     display: block;
     width: 400px;
