@@ -130,7 +130,7 @@ header {
 .drink {
     background-color: #ef7b45;
     height: 580px;
-    overflow: aut;
+    overflow: auto;
     color: white;
     border-radius: 25px;
     padding: 25px !important;
