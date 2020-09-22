@@ -65,11 +65,11 @@ function getCocktail() {
             var drinkCard = $("<div>").attr("class", "col-lg-6 drink");
             var drinkPic = $("<img>").attr({
                 src: drink.strDrinkThumb,
-            });
+            }).attr("class", "floatleft");
             drinkCard.append(drinkPic);
             // append to page
             var drinkName = $("<h4>").text(drink.strDrink);
-            var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions)
+            var drinkIns = $("<h6>").text("Instructions: " + drink.strInstructions);
             drinkCard.append(drinkName, drinkIns);
             for (var i = 1; i <= 15; i++) {
                 var ingKey = "strIngredient" + i;
@@ -131,7 +131,7 @@ function generateRecipe(dishname) {
         recipeEl.empty();
         var results = response.hits[0].recipe.ingredients
         var dishCard = $("<div>").attr("class", "col-lg-6 recipe");
-        var dishimg = $("<img>").attr("src", response.hits[0].recipe.image);
+        var dishimg = $("<img>").attr("src", response.hits[0].recipe.image).attr("class", "floatleft");
         var headline = $("<h4>").text(response.hits[0].recipe.label);
         dishCard.append(dishimg, headline);
 
