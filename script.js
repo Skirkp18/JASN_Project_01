@@ -182,6 +182,7 @@ function savetoLocalStorage() {
 
 var stringifieddishhistory = JSON.stringify(dishhistory);
 localStorage.setItem("history", stringifieddishhistory)
+localStorage.setItem("drink", alcohol);
 
 
 }
@@ -197,4 +198,4 @@ $(document).ready(function(){
 
 loadSearchHistory()
 getCocktail();
-generateRecipe();
+edamamRecipieAPICall();
