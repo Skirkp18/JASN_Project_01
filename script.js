@@ -13,7 +13,7 @@ var dishhistory = []
 searchEl.on("click", function () {
     var dishname = searchinputEl.val()
     alcohol = $("input[class ='form-check-input']:checked").val();
-  
+    cocktailEl.empty();
     edamamRecipieAPICall(dishname)
     getCocktail();
 
@@ -25,7 +25,7 @@ $(searchinputEl).keypress(function(event){
     if(keycode == '13'){
         var dishname = searchinputEl.val()
         alcohol = $("input[class ='form-check-input']:checked").val();
-      
+        cocktailEl.empty();
         edamamRecipieAPICall(dishname)
         getCocktail();
     }
@@ -37,7 +37,7 @@ $(checkboxs).keypress(function(event){
     if(keycode == '13'){
         var dishname = searchinputEl.val()
         alcohol = $("input[class ='form-check-input']:checked").val();
-      
+        cocktailEl.empty();
         edamamRecipieAPICall(dishname)
         getCocktail();
     }
@@ -48,7 +48,6 @@ $(checkboxs).keypress(function(event){
 // DRINK API CALL
 // get drink 
 function getCocktail() {
-    cocktailEl.empty();
     var alQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + alcohol;
     $.ajax({
         url: alQueryURL,
@@ -128,7 +127,6 @@ function generateRecipe(dishname) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        recipeEl.empty();
         var results = response.hits[0].recipe.ingredients
         var dishCard = $("<div>").attr("class", "col-lg-6 recipe");
         var dishimg = $("<img>").attr("src", response.hits[0].recipe.image).attr("class", "floatleft");
@@ -168,15 +166,17 @@ function loadSearchHistory() {
         var p = $("<button>").text(dishhistory[i]).attr("class", "history");
         list.append(p)
         }
-      }
-      $(".history").on("click", function (){
-        var text = $(this).text();
-        console.log("click");
-        generateRecipe(text);
-    })
+      };
+};
 
+$(document).on("click", ".history", function (){
+    var text = $(this).text();
+    console.log("click");
+    cocktailEl.empty();
+    generateRecipe(text);
+    getCocktail();
+});
 
-}
 
 function savetoLocalStorage() {
 
@@ -195,4 +195,3 @@ $(document).ready(function(){
 
 
 loadSearchHistory()
-
