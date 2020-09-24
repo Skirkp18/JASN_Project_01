@@ -6,8 +6,8 @@ var searchEl = $("#search")
 var searchinputEl = $("#searchinput")
 var list = $("#historylist")
 var checkboxs = $(".form-check-input")
-var alcohol = '';
-var dishhistory = []
+var alcohol = 'gin';
+var dishhistory = ["Burger", "Spaghetti", "Salmon", "Pancakes"]
 
 // event listners
 searchEl.on("click", function () {
@@ -182,6 +182,8 @@ function savetoLocalStorage() {
 
 var stringifieddishhistory = JSON.stringify(dishhistory);
 localStorage.setItem("history", stringifieddishhistory)
+localStorage.setItem("drink", alcohol);
+
 
 }
 
@@ -195,3 +197,5 @@ $(document).ready(function(){
 
 
 loadSearchHistory()
+generateRecipe();
+getCocktail();
