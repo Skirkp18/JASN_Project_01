@@ -7,7 +7,7 @@ var searchinputEl = $("#searchinput")
 var list = $("#historylist")
 var checkboxs = $(".form-check-input")
 var alcohol = 'gin';
-var dishhistory = ["Burger", "Spaghetti", "Salom", "Pancakes"]
+var dishhistory = ["Burger", "Spaghetti", "Salmon", "Pancakes"]
 
 // event listners
 searchEl.on("click", function () {
