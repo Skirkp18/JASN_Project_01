@@ -196,6 +196,6 @@ $(document).ready(function(){
 });
 
 
-loadSearchHistory()
+wloadSearchHistory()
 getCocktail();
 edamamRecipieAPICall();
